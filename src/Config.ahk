@@ -255,6 +255,10 @@ Config_hotkeyLabel:
   Config_redirectHotkey(A_ThisHotkey)
 Return
 
+ConnectedToInternet(flag=0x40) { 
+  Return DllCall("Wininet.dll\InternetGetConnectedState", "Str", flag,"Int",0) 
+}
+
 Config_readinAny() {
   ;; Add information to the variable 'text' in this function to display it in the status bar.
   Global Config_readinCpu, Config_readinDiskLoad, Config_readinMemoryUsage, Config_readinNetworkLoad
@@ -267,6 +271,8 @@ Config_readinAny() {
   diskSpaceText := "C: " Round(FreeSpace/1024, 2) " GB"
 
   text .= " " diskSpaceText " "
+
+  text .= " " "INT: " (ConnectedToInternet() ? "[V]" : "[X]") " "
 
   Return, text
 }
