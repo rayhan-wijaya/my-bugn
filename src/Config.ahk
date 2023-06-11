@@ -255,7 +255,7 @@ Config_hotkeyLabel:
   Config_redirectHotkey(A_ThisHotkey)
 Return
 
-ConnectedToInternet(flag=0x40) { 
+ConnectedToInternet() { 
   url=www.google.com
   RunWait, ping.exe %url% -n 1,, Hide UseErrorlevel
 
