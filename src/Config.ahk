@@ -256,7 +256,13 @@ Config_hotkeyLabel:
 Return
 
 ConnectedToInternet(flag=0x40) { 
-  Return DllCall("Wininet.dll\InternetGetConnectedState", "Str", flag,"Int",0) 
+  url=www.google.com
+  RunWait, ping.exe %url% -n 1,, Hide UseErrorlevel
+
+  If Errorlevel
+    Return False
+
+  Return True
 }
 
 Config_readinAny() {
