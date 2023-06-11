@@ -270,9 +270,10 @@ Config_readinAny() {
   DriveSpaceFree, FreeSpace, C:\
   diskSpaceText := "C: " Round(FreeSpace/1024, 2) " GB"
 
-  text .= " " diskSpaceText " "
+  internetStatusText := "INT: " (ConnectedToInternet() ? "[V]" : "[X]")
 
-  text .= " " "INT: " (ConnectedToInternet() ? "[V]" : "[X]") " "
+  text .= " " diskSpaceText " "
+  text .= " " internetStatusText " "
 
   Return, text
 }
