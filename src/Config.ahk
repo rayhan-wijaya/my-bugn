@@ -537,3 +537,8 @@ Config_UI_saveSession() {
 #^s::Config_UI_saveSession()
 #^r::Reload
 #^q::ExitApp
+
+;; Volume
+#^v::
+  Send {Volume_Mute}
+return
