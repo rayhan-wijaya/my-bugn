@@ -539,6 +539,6 @@ Config_UI_saveSession() {
 #^q::ExitApp
 
 ;; Volume
-#^v::
+!^v::
   Send {Volume_Mute}
 return
