@@ -192,7 +192,7 @@ Bar_addElement(m, id, text, x, y1, width, backColor, foreColor, fontColor) {
   Local y2
 
   y2 := y1 + (Bar_ctrlHeight - Bar_textHeight) / 2
-  Gui, Add, Text, x%x% y%y1% w%width% h%Bar_ctrlHeight% BackgroundTrans vBar_#%m%_%id%_event gBar_GuiClick,
+  ; Gui, Add, Text, x%x% y%y1% w%width% h%Bar_ctrlHeight% BackgroundTrans vBar_#%m%_%id%_event gBar_GuiClick,
   Gui, Add, Progress, x%x% y%y1% w%width% h%Bar_ctrlHeight% Background%backColor% c%foreColor% vBar_#%m%_%id%_highlighted
   GuiControl, , Bar_#%m%_%id%_highlighted, 100
   Gui, Font, c%fontColor%
@@ -289,24 +289,24 @@ Bar_getTextWidth(x, reverse=False)
   Return, textWidth
 }
 
-Bar_GuiClick:
-  Manager_winActivate(Bar_aWndId)
-  If (A_GuiEvent = "Normal") {
-    If (SubStr(A_GuiControl, -13) = "_shebang_event") {
-      If Not Bar_cmdGuiIsVisible
-        If Not (SubStr(A_GuiControl, 6, InStr(A_GuiControl, "_", False, 6) - 6) = Manager_aMonitor)
-          Manager_activateMonitor(SubStr(A_GuiControl, 6, InStr(A_GuiControl, "_", False, 6) - 6))
-      Bar_toggleCommandGui()
-    } Else {
-      If Not (SubStr(A_GuiControl, 6, InStr(A_GuiControl, "_", False, 6) - 6) = Manager_aMonitor)
-        Manager_activateMonitor(SubStr(A_GuiControl, 6, InStr(A_GuiControl, "_", False, 6) - 6))
-      If (SubStr(A_GuiControl, -12) = "_layout_event")
-        View_setLayout(-1)
-      Else If InStr(A_GuiControl, "_view_#") And (SubStr(A_GuiControl, -5) = "_event")
-        Monitor_activateView(SubStr(A_GuiControl, InStr(A_GuiControl, "_view_#", False, 0) + 7, 1))
-    }
-  }
-Return
+; Bar_GuiClick:
+;   Manager_winActivate(Bar_aWndId)
+;   If (A_GuiEvent = "Normal") {
+;     If (SubStr(A_GuiControl, -13) = "_shebang_event") {
+;       If Not Bar_cmdGuiIsVisible
+;         If Not (SubStr(A_GuiControl, 6, InStr(A_GuiControl, "_", False, 6) - 6) = Manager_aMonitor)
+;           Manager_activateMonitor(SubStr(A_GuiControl, 6, InStr(A_GuiControl, "_", False, 6) - 6))
+;       Bar_toggleCommandGui()
+;     } Else {
+;       If Not (SubStr(A_GuiControl, 6, InStr(A_GuiControl, "_", False, 6) - 6) = Manager_aMonitor)
+;         Manager_activateMonitor(SubStr(A_GuiControl, 6, InStr(A_GuiControl, "_", False, 6) - 6))
+;       If (SubStr(A_GuiControl, -12) = "_layout_event")
+;         View_setLayout(-1)
+;       Else If InStr(A_GuiControl, "_view_#") And (SubStr(A_GuiControl, -5) = "_event")
+;         Monitor_activateView(SubStr(A_GuiControl, InStr(A_GuiControl, "_view_#", False, 0) + 7, 1))
+;     }
+;   }
+; Return
 
 Bar_GuiContextMenu:
   Manager_winActivate(Bar_aWndId)
