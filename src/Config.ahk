@@ -280,6 +280,7 @@ Config_readinAny() {
 
   text .= diskSpaceText
   text .= internetStatusText
+  text .= " / "
 
   Return, text
 }
