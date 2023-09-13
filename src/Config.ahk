@@ -274,9 +274,9 @@ Config_readinAny() {
     text .= ResourceMonitor_getText()
 
   DriveSpaceFree, FreeSpace, C:\
-  diskSpaceText := " C: " Round(FreeSpace/1024, 2) " GB "
+  diskSpaceText := " C: (" Round(FreeSpace/1024, 2) " GB) "
 
-  internetStatusText := ConnectedToInternet() ? "" : " INT: [X] "
+  internetStatusText := ConnectedToInternet() ? " INT: (V) " : " INT: [X] "
 
   text .= diskSpaceText
   text .= internetStatusText
