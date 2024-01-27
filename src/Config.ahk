@@ -255,16 +255,6 @@ Config_hotkeyLabel:
   Config_redirectHotkey(A_ThisHotkey)
 Return
 
-ConnectedToInternet() { 
-  url=www.google.com
-  RunWait, ping.exe %url% -n 1,, Hide UseErrorlevel
-
-  If Errorlevel
-    Return False
-
-  Return True
-}
-
 Config_readinAny() {
   ;; Add information to the variable 'text' in this function to display it in the status bar.
   Global Config_readinCpu, Config_readinDiskLoad, Config_readinMemoryUsage, Config_readinNetworkLoad
@@ -276,10 +266,7 @@ Config_readinAny() {
   DriveSpaceFree, FreeSpace, C:\
   diskSpaceText := " C: (" Round(FreeSpace/1024, 2) " GB) "
 
-  internetStatusText := ConnectedToInternet() ? " INT: (V) " : " INT: [X] "
-
   text .= diskSpaceText
-  text .= internetStatusText
   text .= " \ "
 
   Return, text
