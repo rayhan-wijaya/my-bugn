@@ -531,7 +531,6 @@ Config_UI_saveSession() {
   Send {Volume_Mute}
 return
 
-
 !^+v::
   InputBox, VolumeInput, Enter Volume, "Please enter a volume:", , 300, 150
   if (VolumeInput = "")
