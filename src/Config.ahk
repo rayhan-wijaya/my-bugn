@@ -532,7 +532,9 @@ Config_UI_saveSession() {
 return
 
 !^+v::
-  InputBox, VolumeInput, Enter Volume, "Please enter a volume:", , 300, 150
+  SoundGet, master_volume
+
+  InputBox, VolumeInput, Enter Volume, %master_volume% / 100, , 300, 150
   if (VolumeInput = "")
     return
 
