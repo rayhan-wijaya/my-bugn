@@ -532,9 +532,10 @@ Config_UI_saveSession() {
 return
 
 !^+v::
-  SoundGet, master_volume
+  SoundGet, MasterVolume
+  MasterVolume := Ceil(MasterVolume)
 
-  InputBox, VolumeInput, Enter Volume, %master_volume% / 100, , 300, 150
+  InputBox, VolumeInput, Enter Volume, %MasterVolume% / 100, , 300, 150
   if (VolumeInput = "")
     return
 
