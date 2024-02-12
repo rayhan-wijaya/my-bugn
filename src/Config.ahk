@@ -530,3 +530,8 @@ Config_UI_saveSession() {
 !^v::
   Send {Volume_Mute}
 return
+
+!^+v::
+  InputBox, VolumeInput, Enter Volume, "Please enter a volume:", , 300, 150
+  SoundSet, %VolumeInput%
+return
