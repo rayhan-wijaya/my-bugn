@@ -525,19 +525,3 @@ Config_UI_saveSession() {
 #^s::Config_UI_saveSession()
 #^r::Reload
 #^q::ExitApp
-
-;; Volume
-!^v::
-  Send {Volume_Mute}
-return
-
-!^+v::
-  SoundGet, MasterVolume
-  MasterVolume := Ceil(MasterVolume)
-
-  InputBox, VolumeInput, Enter Volume, %MasterVolume% / 100, , 300, 150
-  if (VolumeInput = "")
-    return
-
-  SoundSet, %VolumeInput%
-return
