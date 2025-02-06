@@ -267,7 +267,6 @@ Config_readinAny() {
   diskSpaceText := " C: (" Round(FreeSpace/1024, 2) " GB) "
 
   text .= diskSpaceText
-  text .= " \ "
 
   Return, text
 }
